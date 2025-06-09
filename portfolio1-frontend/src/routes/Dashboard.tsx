@@ -6,9 +6,7 @@ import TableBox from '../components/TableBox';
 import DisplayBox from '../components/Dashboard/DisplayBox';
 
 
-
 const Dashboard = () => {
-
 
     const [selectedOption, setSelectedOption] = useState<string>("view");
 

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Box, Paper, Typography, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import type { loginCredentialsType } from '../utils/utilsType.ts';
+import { post } from '../utils/apiHelper.ts';
+
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -10,7 +13,19 @@ function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Add authentication logic here
-    navigate('/dashboard');
+
+    const loginCredentials: loginCredentialsType = {
+      "username": username,
+      "password": password
+    }
+    
+    console.log("username:", username);
+    console.log("password:", password);
+
+    post("http://localhost:8089", loginCredentials);
+
+
+    // navigate('/dashboard');
   };
 
   return (
